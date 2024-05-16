@@ -1,5 +1,13 @@
-import Link from 'next/link'
+"use client";
+import { WagmiProvider } from "wagmi";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {config} from './../util/wagmiConfig';
+import Navbar from "../components/Navbar";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import '@rainbow-me/rainbowkit/styles.css';
 import '../styles/globals.css'
+
+const queryClient = new QueryClient();
 
 export default function RootLayout({
     children,
@@ -9,12 +17,14 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <nav>
-                    <h1>navbar</h1>
-                    <Link href="/buy">Buy DataSet</Link>
-                    <Link href="/sell">Sell DataSet</Link>
-                </nav>
-                {children}
+                <WagmiProvider config={config}>
+                    <QueryClientProvider client={queryClient}>
+                        <RainbowKitProvider>
+                            <Navbar/>
+                            {children}
+                        </RainbowKitProvider>
+                    </QueryClientProvider>
+                </WagmiProvider>
             </body>
         </html>
     )
