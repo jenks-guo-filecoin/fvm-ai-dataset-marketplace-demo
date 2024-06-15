@@ -1,7 +1,7 @@
 "use client";
 import { WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {config} from './../util/wagmiConfig';
+import {config} from '../utils/wagmiConfig';
 import Navbar from "../components/Navbar";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import '@rainbow-me/rainbowkit/styles.css';

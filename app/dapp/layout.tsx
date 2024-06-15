@@ -12,6 +12,7 @@ export default function DappLayout({ children }) {
   const isConnected = status === "connected";
   const wrongChain = chain === undefined;
   const promptSwitch = isConnected && wrongChain;
+
   return (
     <main>
       {!isConnected && hydrated && (
